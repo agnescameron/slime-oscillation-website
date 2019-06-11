@@ -2,6 +2,7 @@ var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 ctx.lineWidth = 2;
 var amplitude = 5;
+var nodes = 4;
 var rate = 800;
 
 function drawSlime(rectangles) {
@@ -21,19 +22,19 @@ function drawSlime(rectangles) {
   }
 }
 
-function drawFood() {
+function drawFood(nodeSize) {
 	ctx.fillStyle = "red";
 	ctx.rect(60, 60, 60, 60);
 	ctx.fillRect(60, 60, 60, 60);
-	ctx.rect(720, 60, 60, 60);	
-	ctx.fillRect(720, 60, 60, 60);	
+	ctx.rect(nodes*nodeSize+120, 60, 60, 60);	
+	ctx.fillRect(nodes*nodeSize+120, 60, 60, 60);	
 }
 
-function createRectangles() {
+function createRectangles(nodeSize) {
   var rectangles = [];
-  for(var i = 0; i<10; i++){
+  for(var i = 0; i<nodes; i++){
   	var ranY = Math.round(Math.random()*amplitude);
-  	var rectangle = {startX: 120+i*60, endX: 60, startY: 60-ranY, endY: 60+2*ranY};
+  	var rectangle = {startX: 120+i*nodeSize, endX: nodeSize, startY: 60-ranY, endY: 60+2*ranY};
   	rectangles.push(rectangle);
   }
   drawSlime(rectangles);
@@ -61,12 +62,22 @@ $( function() {
             $("#speed").text(ui.value);
         }
     });  
+  $("#nodeSlider").slider(
+    {
+        min: 4,
+        max: 30,
+        slide: function (event, ui) {
+            nodes = ui.value;
+            $("#nodes").text(ui.value);
+        }
+    });    
   });
 
 
 function drawLoop(){
-      createRectangles();
-      drawFood();
+      nodeSize = 600/nodes;
+      createRectangles(nodeSize);
+      drawFood(nodeSize);
       setTimeout(drawLoop, rate);
   }
 
