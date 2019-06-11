@@ -1,0 +1,24 @@
+body{
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+#title {
+	margin-left:90px;
+}
+
+#slider {
+	width: 250px;
+	margin-bottom: 10px;
+}
+
+#canvas {
+	margin-left:60px;
+}
+
+#tools {
+	margin-left:100px;
+	width: 300px;
+  	border-style: solid;
+  	border-width: 2px;
+  	padding: 10px 10px 40px 10px;
+}
