@@ -1,9 +1,14 @@
 body{
 	font-family: 'Nunito Sans', sans-serif;
+	background-color: #adc9f4;
 }
 
 #title {
 	margin-left:90px;
+}
+
+#canvas {
+	background-color: #adc9f4;
 }
 
 #slider {

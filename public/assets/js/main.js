@@ -2,7 +2,7 @@ var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 ctx.lineWidth = 2;
 var amplitude = 5;
-
+var rate = 800;
 
 function drawSlime(rectangles) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -40,22 +40,34 @@ function createRectangles() {
 }
 
 $( function() {
-  $("#slider").slider({
+  $("#ampSlider").slider(
+    {
         orientation: "horizontal",
         range: false,
         min: 0,
-        max: 1,
+        max: 10,
         value: 0,
-        step: .01,
+        step: .1,
         animate: true,
         slide: function (event, ui) {
-            amplitude = 5 + 10*ui.value;
-            $("#a").text(ui.value);
+            amplitude = 5 + ui.value;
+            $("#amplitude").text(ui.value);
         }
     });
+  $("#rateSlider").slider(
+    {
+        slide: function (event, ui) {
+            rate = 800-7*ui.value;
+            $("#speed").text(ui.value);
+        }
+    });  
   });
 
-window.setInterval(function(){
-  createRectangles();
-  drawFood();
-}, 800);
+
+function drawLoop(){
+      createRectangles();
+      drawFood();
+      setTimeout(drawLoop, rate);
+  }
+
+setTimeout(drawLoop, 10);
