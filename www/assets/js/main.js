@@ -2,8 +2,10 @@ var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 ctx.lineWidth = 2;
 var amplitude = 5;
-var nodes = 4;
+var nodes = 5;
 var rate = 800;
+var time = 0;
+var steps;
 
 function drawSlime(rectangles) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -33,12 +35,13 @@ function drawFood(nodeSize) {
 function createRectangles(nodeSize) {
   var rectangles = [];
   for(var i = 0; i<nodes; i++){
-  	var ranY = Math.round(Math.random()*amplitude);
+  	var ranY = Math.round(steps[i][time]*amplitude);
   	var rectangle = {startX: 120+i*nodeSize, endX: nodeSize, startY: 60-ranY, endY: 60+2*ranY};
   	rectangles.push(rectangle);
   }
   drawSlime(rectangles);
 }
+
 
 $( function() {
   $("#ampSlider").slider(
@@ -58,27 +61,37 @@ $( function() {
   $("#rateSlider").slider(
     {
         slide: function (event, ui) {
-            rate = 800-7*ui.value;
+            rate = 100 - ui.value;
             $("#speed").text(ui.value);
         }
     });  
-  $("#nodeSlider").slider(
-    {
-        min: 4,
-        max: 30,
-        slide: function (event, ui) {
-            nodes = ui.value;
-            $("#nodes").text(ui.value);
-        }
-    });    
+  // $("#nodeSlider").slider(
+  //   {
+  //       min: 4,
+  //       max: 30,
+  //       slide: function (event, ui) {
+  //           nodes = ui.value;
+  //           $("#nodes").text(ui.value);
+  //       }
+  //   });    
   });
 
 
 function drawLoop(){
       nodeSize = 600/nodes;
       createRectangles(nodeSize);
+      
       drawFood(nodeSize);
+      if(time >= steps[0].length-1){
+        time = 0;
+      }
       setTimeout(drawLoop, rate);
+      time = time + 1;
   }
 
-setTimeout(drawLoop, 10);
+Shiny.addCustomMessageHandler("loadJSON",
+  function(message) {
+  steps = message;
+  console.log(steps[1][20])
+  setTimeout(drawLoop, 10);
+  });
