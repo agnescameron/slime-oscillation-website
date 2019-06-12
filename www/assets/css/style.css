@@ -11,37 +11,36 @@ body{
 
 #canvas {
 	background-color: #adc9f4;
-	margin-left:60px;
 }
 
 #tools {
-	margin-left:100px;
 	width: 300px;
   	padding: 10px 10px 40px 10px;
 }
 
 #about {
-/*	border-style: solid;
-  	border-width: 2px;*/
   	width: 500px;
  	margin-left:90px;
-/* 	padding: 20px;*/	
-}
 
-.slider .ui-slider .ui-slider-handle{
-  width: 100%; /* Full-width */
-  height: 25px; /* Specified height */
-  background: #d3d3d3; /* Grey background */
-  outline: none; /* Remove outline */
-  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-  transition: opacity .2s;
-	margin-bottom: 10px;
 }
+/*
+.ui-slider .ui-slider-handle{	
+    width:2em;
+    left:-.6em;
+    text-decoration:none;
+    text-align:center;
+}*/
 
 .sliderbox {
 	width: 250px;
 	margin-bottom: 10px;
 }
 
-
+#simContainer {
+	margin-top: 40px;
+	border-style: solid;
+  	border-width: 2px;
+  	padding: 20px;
+  	margin-left: 90px;
+  	width: 800px;	
+}

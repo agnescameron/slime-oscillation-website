@@ -13,12 +13,13 @@
 <h1 id="title"><b>slime mould oscillation model</b></h1>
 
 <div id="about">
-This is a model of a tubule in the slime mould <i>Physarum Polycephalum</i> as a series of coupled oscillators. As one segment of the tubule contracts, it pushes volume into neighbouring regions, affecting that area's ability to contract and expand. We believe that this might be a possible model for how information is transferred across a slime mould, and a mechanism for the 'peristaltic wave' observed in real <i>Physarum</i> samples.
-
-Shown here is an interactive interface that allows the parameters of the simulation to be manipulated, demonstrating their effects on a real slime. Right now, this simulation is quite basic, however more complexity will be added over the coming months.
+The slime mold, Physarum polycephalum, is a single-celled organism that can make decisions. Although it doesn't possess a nervous system, it can sense multiple stimuli, compare their qualities, and "choose" or "reject" food sources. This interactive website treats a tubule (a single 'branch') of the slime mould as a set of connected "oscillators". Each oscillator has an intrinsic pattern of pulsations, and can communicate with its neighbors. The cell (or this set of oscillators) collectively makes a decision to either choose or reject a food source. 
+<br><br>
+You can play with the parameters that affect the strength of coupling, the intrinsic oscillation characteristics or the amplitude of oscillations. Now your mission, should you choose to accept it, is to tweak the parameters and help the slime mold make a decision!
 </div>
 
-<canvas id="canvas" width="900" height="250">
+<div id="simContainer">
+<canvas id="canvas" width="740" height="180">
     This text is displayed if your browser does not support HTML5 Canvas.
 </canvas>
 
@@ -30,7 +31,7 @@ Shown here is an interactive interface that allows the parameters of the simulat
 	</div>
 	<div class="sliderbox">	
 		<div id="rateSlider" class="slider"></div>
-		speed:<div id="speed">0</div>
+		speed:<div id="speed">50</div>
 </div>
 <!-- 
 	<div id="nodeSlider"></div>

@@ -1,6 +1,7 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 ctx.lineWidth = 2;
+ctx.strokeStyle = "yellow";
 var amplitude = 5;
 var nodes = 5;
 var rate = 800;
@@ -9,7 +10,6 @@ var steps;
 
 function drawSlime(rectangles) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.beginPath();
   for(var i = 0; i < rectangles.length; i++) {
     var rect = rectangles[i];
     ctx.fillStyle = "yellow";
@@ -26,10 +26,10 @@ function drawSlime(rectangles) {
 }
 
 function drawFood(nodeSize) {
-	ctx.lineStyle = "black";
-	ctx.rect(60, 60, 60, 60);
+  ctx.beginPath();
+	ctx.rect(0, 60, 60, 60);
 	// ctx.fillRect(60, 60, 60, 60);
-	ctx.rect(nodes*nodeSize+120, 60, 60, 60);	
+	ctx.rect(nodes*nodeSize+60, 60, 60, 60);	
   ctx.stroke();
   ctx.closePath();
 	// ctx.fillRect(nodes*nodeSize+120, 60, 60, 60);	
@@ -39,7 +39,7 @@ function createRectangles(nodeSize) {
   var rectangles = [];
   for(var i = 0; i<nodes; i++){
   	var ranY = Math.round(steps[i][time]*amplitude);
-  	var rectangle = {startX: 120+i*nodeSize, endX: nodeSize, startY: 60-ranY, endY: 60+2*ranY};
+  	var rectangle = {startX: 60+i*nodeSize, endX: nodeSize, startY: 60-ranY, endY: 60+2*ranY};
   	rectangles.push(rectangle);
   }
   drawSlime(rectangles);
@@ -62,7 +62,9 @@ $( function() {
         }
     });
   $("#rateSlider").slider(
-    {
+    {            
+        min: 50,
+        max: 100,
         slide: function (event, ui) {
             rate = 100 - ui.value;
             $("#speed").text(ui.value);
