@@ -11,7 +11,7 @@ ui <- fluidPage(
 server <- function(input, output, session) {
   observe({
     session$sendCustomMessage(type = "loadJSON", 
-                              message = read_json("test.json"))
+                              message = read_json("tiny.json"))
     }) 
   
 }

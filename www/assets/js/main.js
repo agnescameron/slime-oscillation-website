@@ -9,6 +9,7 @@ var steps;
 
 function drawSlime(rectangles) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.beginPath();
   for(var i = 0; i < rectangles.length; i++) {
     var rect = rectangles[i];
     ctx.fillStyle = "yellow";
@@ -25,11 +26,13 @@ function drawSlime(rectangles) {
 }
 
 function drawFood(nodeSize) {
-	ctx.fillStyle = "red";
+	ctx.lineStyle = "black";
 	ctx.rect(60, 60, 60, 60);
-	ctx.fillRect(60, 60, 60, 60);
+	// ctx.fillRect(60, 60, 60, 60);
 	ctx.rect(nodes*nodeSize+120, 60, 60, 60);	
-	ctx.fillRect(nodes*nodeSize+120, 60, 60, 60);	
+  ctx.stroke();
+  ctx.closePath();
+	// ctx.fillRect(nodes*nodeSize+120, 60, 60, 60);	
 }
 
 function createRectangles(nodeSize) {

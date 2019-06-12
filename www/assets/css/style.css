@@ -5,25 +5,43 @@ body{
 
 #title {
 	margin-left:90px;
+	margin-top: 40px;
+	margin-bottom: 20px;
 }
 
 #canvas {
 	background-color: #adc9f4;
-}
-
-#slider {
-	width: 250px;
-	margin-bottom: 10px;
-}
-
-#canvas {
 	margin-left:60px;
 }
 
 #tools {
 	margin-left:100px;
 	width: 300px;
-  	border-style: solid;
-  	border-width: 2px;
   	padding: 10px 10px 40px 10px;
 }
+
+#about {
+/*	border-style: solid;
+  	border-width: 2px;*/
+  	width: 500px;
+ 	margin-left:90px;
+/* 	padding: 20px;*/	
+}
+
+.slider .ui-slider .ui-slider-handle{
+  width: 100%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+	margin-bottom: 10px;
+}
+
+.sliderbox {
+	width: 250px;
+	margin-bottom: 10px;
+}
+
+
